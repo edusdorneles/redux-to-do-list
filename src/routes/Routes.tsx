@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes as Switch, Route } from "react-router-dom";
+import Layout from "components/Layout";
 
 // Pages
 import Home from "pages/Home/Home";
@@ -11,9 +12,11 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <GlobalStyle />
 
-      <Switch>
-        <Route path="/" element={<Home />} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path="/" element={<Home />} />
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 };

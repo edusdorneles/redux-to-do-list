@@ -2,7 +2,7 @@ export const DarkTheme = {
   title: "DarkTheme",
 
   colors: {
-    primary: "#14141C",
+    primary: "#36363C",
     secondary: "#37474F",
     background: "#222222",
     text: "#FFFFFF"

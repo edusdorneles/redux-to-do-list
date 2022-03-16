@@ -2,8 +2,8 @@ export const LightTheme = {
   title: "LightTheme",
 
   colors: {
-    primary: "#14141C",
-    secondary: "#ECEFF1",
+    primary: "#FFFFFF",
+    secondary: "#F0F2F4",
     background: "#DDE4E7",
     text: "#353535"
   },
