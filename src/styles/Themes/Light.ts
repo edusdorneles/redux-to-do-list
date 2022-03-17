@@ -14,5 +14,7 @@ export const LightTheme = {
     small: "14px"
   },
 
-  transition: "all .2s"
+  transition: "all .2s",
+  borderRadius: "6px",
+  boxShadow: "2px 2px 6px #909090"
 };

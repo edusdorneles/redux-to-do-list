@@ -1,5 +1,8 @@
-import React, { useState } from "react";
 import ReactSwitch from "react-switch";
+
+// Redux
+import { connect } from "react-redux";
+import { switchTheme } from "store/actions/themeAction";
 
 // Styles
 import { HeaderStyle } from "./styles";
@@ -8,10 +11,15 @@ import { Container } from "styles/GlobalStyle";
 // Icons
 import { FiSun } from "react-icons/fi";
 import { FiMoon } from "react-icons/fi";
+import { Dispatch } from "redux";
 
-const Header: React.FC = () => {
-  const [theme, setTheme] = useState(true);
+// Interfaces
+interface IProps {
+  theme: boolean;
+  switchTheme: IThemeActionCreator;
+}
 
+const Header: React.FC<IProps> = ({ theme, switchTheme }) => {
   return (
     <HeaderStyle>
       <Container className="header__container">
@@ -23,7 +31,7 @@ const Header: React.FC = () => {
           <ReactSwitch
             checked={theme}
             onChange={() => {
-              setTheme(!theme);
+              switchTheme(theme);
             }}
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 6px rgba(0, 0, 0, 0.2)"
@@ -51,4 +59,21 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+// Mapeando os estados para as props do componente.
+const mapStateToProps = (state: ITheme) => {
+  return {
+    theme: state.theme
+  };
+};
+
+// Mapeando os dispatchs para as props do componente.
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    switchTheme(theme: Theme) {
+      const action = switchTheme(theme);
+      dispatch(action);
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
