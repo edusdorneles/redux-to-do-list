@@ -1,12 +1,14 @@
-const initialState = true;
+import { createSlice } from "@reduxjs/toolkit";
 
-const themeReducer = (state = initialState, action: IThemeAction) => {
-  switch (action.type) {
-    case "SWITCH_THEME":
-      return !action.payload;
-    default:
-      return state;
+// Actions
+import { switchTheme } from "store/actions/themeAction";
+
+const themeReducer = createSlice({
+  name: "theme",
+  initialState: true,
+  reducers: {
+    switchTheme
   }
-};
+});
 
 export default themeReducer;

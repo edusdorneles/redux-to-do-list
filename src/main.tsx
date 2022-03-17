@@ -3,8 +3,7 @@ import App from "./App";
 
 // Passando o estado para toda a aplicação.
 import { Provider } from "react-redux";
-import storeConfig from "store/storeConfig";
-const store = storeConfig();
+import store from "store/storeConfig";
 
 ReactDOM.render(
   <Provider store={store}>
