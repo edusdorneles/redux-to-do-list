@@ -12,7 +12,7 @@ export const HeaderStyle = styled.div`
 
     .header__container__title {
       h1 {
-        font-size: 26px;
+        font-size: ${(props) => props.theme.fontSize.title};
         font-weight: normal;
       }
     }

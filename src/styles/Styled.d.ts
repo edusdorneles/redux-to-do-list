@@ -7,6 +7,7 @@ declare module "styled-components" {
     colors: {
       primary: string;
       secondary: string;
+      third: string;
       background: string;
       text: string;
     };
@@ -20,5 +21,10 @@ declare module "styled-components" {
     transition: string;
     borderRadius: string;
     boxShadow: string;
+
+    // Mobile
+    media: {
+      mobile: string;
+    };
   }
 }
