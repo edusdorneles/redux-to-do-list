@@ -1,6 +1,7 @@
 import AddTask from "components/Task/AddTask/AddTask";
 import TaskCounter from "components/Task/TaskCounter/TaskCounter";
 import TaskFilter from "components/Task/TaskFilter/TaskFilter";
+import TaskCard from "components/Task/TaskCard/TaskCard";
 
 // Styles
 import { HomeStyle } from "./styles";
@@ -13,6 +14,8 @@ const Home: React.FC = () => {
         <AddTask />
         <TaskCounter />
         <TaskFilter />
+
+        <TaskCard />
       </Container>
     </HomeStyle>
   );

@@ -3,7 +3,7 @@ export const DarkTheme = {
 
   colors: {
     primary: "#36363C",
-    secondary: "#37474F",
+    secondary: "#555555",
     third: "#2693E6",
     background: "#222222",
     text: "#FFFFFF"
