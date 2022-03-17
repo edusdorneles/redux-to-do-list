@@ -1,19 +1,17 @@
 import Routes from "routes/Routes";
 
 // Redux
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "store/storeConfig";
 
 // Styles
 import { ThemeProvider } from "styled-components";
 import { DarkTheme } from "styles/Themes/Dark";
 import { LightTheme } from "styles/Themes/Light";
 
-// Interfaces
-interface IProps {
-  theme: Theme;
-}
+const App: React.FC = () => {
+  const theme = useSelector((state: RootState) => state.themeReducer.theme);
 
-const App: React.FC<IProps> = ({ theme }) => {
   return (
     <ThemeProvider theme={theme ? DarkTheme : LightTheme}>
       <Routes />
@@ -27,4 +25,4 @@ const mapStateToProps = (state: ITheme) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default App;

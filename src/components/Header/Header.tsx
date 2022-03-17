@@ -2,18 +2,19 @@ import ReactSwitch from "react-switch";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "store/storeConfig";
+import { switchTheme } from "store/Theme.store";
 
 // Styles
 import { HeaderStyle } from "./styles";
 import { Container } from "styles/GlobalStyle";
-import themeReducer from "store/reducers/themeReducer";
 
 // Icons
 import { FiSun } from "react-icons/fi";
 import { FiMoon } from "react-icons/fi";
 
 const Header: React.FC = () => {
-  const theme = useSelector((state: any) => state.theme);
+  const theme = useSelector((state: RootState) => state.themeReducer.theme);
   const dispatch = useDispatch();
 
   return (
@@ -27,7 +28,7 @@ const Header: React.FC = () => {
           <ReactSwitch
             checked={theme}
             onChange={() => {
-              dispatch(themeReducer.actions.switchTheme());
+              dispatch(switchTheme());
             }}
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 6px rgba(0, 0, 0, 0.2)"

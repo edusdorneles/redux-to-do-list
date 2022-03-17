@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Reducers
-import themeReducer from "./reducers/themeReducer";
+import themeReducer from "store/Theme.store";
 
 const store = configureStore({
-  reducer: {
-    theme: themeReducer.reducer
-  }
+  reducer: { themeReducer }
 });
 
+export type RootState = ReturnType<typeof store.getState>;
 export default store;

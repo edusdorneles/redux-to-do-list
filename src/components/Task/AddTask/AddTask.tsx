@@ -4,8 +4,14 @@ import { AddTaskStyle } from "./styles";
 const AddTask: React.FC = () => {
   return (
     <AddTaskStyle>
-      <input type="text" placeholder="Insira sua tarefa!" />
-      <button>Add</button>
+      <div className="add-task__inputs">
+        <input type="text" placeholder="Insira o título da sua tarefa!" />
+        <input type="text" placeholder="Insira a descrição da sua tarefa!" />
+      </div>
+
+      <div className="add-task__button">
+        <button>Add</button>
+      </div>
     </AddTaskStyle>
   );
 };
