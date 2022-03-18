@@ -32,20 +32,6 @@ const TaskFilter: React.FC = () => {
       <div className="task-filter__buttons">
         <button
           className={
-            activeFilter === "all"
-              ? "task-filter__buttons__actions active"
-              : "task-filter__buttons__actions"
-          }
-          onClick={() => {
-            handleFilterAll();
-            setActiveFilter("all");
-          }}
-        >
-          Mostrar tudo
-        </button>
-
-        <button
-          className={
             activeFilter === "completed"
               ? "task-filter__buttons__actions active"
               : "task-filter__buttons__actions"
@@ -56,6 +42,20 @@ const TaskFilter: React.FC = () => {
           }}
         >
           Mostrar concluídas
+        </button>
+
+        <button
+          className={
+            activeFilter === "all"
+              ? "task-filter__buttons__actions active"
+              : "task-filter__buttons__actions"
+          }
+          onClick={() => {
+            handleFilterAll();
+            setActiveFilter("all");
+          }}
+        >
+          Mostrar tudo
         </button>
 
         <button
