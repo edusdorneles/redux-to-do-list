@@ -9,5 +9,9 @@ export const HomeStyle = styled.div`
         text-align: center;
       }
     }
+
+    .home__container__task--non-task {
+      text-align: center;
+    }
   }
 `;

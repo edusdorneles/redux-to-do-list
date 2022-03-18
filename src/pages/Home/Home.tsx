@@ -5,14 +5,15 @@ import TaskCard from "components/Task/TaskCard/TaskCard";
 
 // Redux
 import { useSelector } from "react-redux";
+import { RootState } from "store/storeConfig";
 
 // Styles
 import { HomeStyle } from "./styles";
 import { Container } from "styles/GlobalStyle";
-import { RootState } from "store/storeConfig";
 
 const Home: React.FC = () => {
-  const tasks = useSelector((task: RootState) => task.tasksReducer);
+  const tasks = useSelector((state: RootState) => state.tasksReducer);
+  const filter = useSelector((state: RootState) => state.filterReducer);
 
   return (
     <HomeStyle>
@@ -25,9 +26,21 @@ const Home: React.FC = () => {
           <p>Tarefas:</p>
         </div>
 
-        {tasks.map((task: Task) => (
-          <TaskCard key={task.id} task={task} />
-        ))}
+        {tasks.length ? (
+          tasks
+            .filter((task: any) => {
+              if (filter === null) {
+                return task;
+              } else {
+                return task.completed === filter;
+              }
+            })
+            .map((task: Task) => <TaskCard key={task.id} task={task} />)
+        ) : (
+          <p className="home__container__task--non-task">
+            Nenhuma tarefa adicionada, comece a adionar tarefas para vê-las!
+          </p>
+        )}
       </Container>
     </HomeStyle>
   );

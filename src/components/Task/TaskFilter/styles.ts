@@ -32,7 +32,7 @@ export const TaskFilterStyle = styled.div`
         border: 1px solid ${(props) => props.theme.colors.third};
       }
 
-      .active {
+      &.active {
         border: 1px solid ${(props) => props.theme.colors.third};
       }
     }

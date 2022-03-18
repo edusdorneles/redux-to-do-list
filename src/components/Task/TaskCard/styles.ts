@@ -18,9 +18,13 @@ export const TaskCardStyle = styled.div`
     }
 
     .task-card__task__text {
+      width: 100%;
+      word-break: break-all;
+
       .task-card__task__text__title {
         font-size: ${(props) => props.theme.fontSize.medium};
         font-weight: 500;
+        padding-right: 10px;
 
         &.task-card__task__text__title--completed {
           text-decoration: line-through;
@@ -29,6 +33,7 @@ export const TaskCardStyle = styled.div`
 
       .task-card__task__text__description {
         font-size: ${(props) => props.theme.fontSize.small};
+        text-align: justify;
 
         &.task-card__task__text__description--completed {
           text-decoration: line-through;
@@ -40,6 +45,7 @@ export const TaskCardStyle = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: auto;
 
       .task-card__task__actions--add,
       .task-card__task__actions--remove,
