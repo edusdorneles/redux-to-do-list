@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const filter = createSlice({
   name: "filter",
 
-  initialState: "",
+  initialState: null,
 
   reducers: {
     // Filtro das tarefas.

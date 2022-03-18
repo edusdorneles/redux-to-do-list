@@ -1,6 +1,14 @@
+import React, { useState } from "react";
+import Modal from "components/Modal/Modal";
+
 // Redux
 import { useDispatch } from "react-redux";
-import { completeTask, deleteTask, uncompleteTask } from "store/Tasks.store";
+import {
+  completeTask,
+  deleteTask,
+  uncompleteTask,
+  editTask
+} from "store/Tasks.store";
 
 // Styles
 import { TaskCardStyle } from "./styles";
@@ -15,17 +23,44 @@ interface IProps {
 
 const TaskCard: React.FC<IProps> = ({ task }) => {
   const dispatch = useDispatch();
+  const [modalActive, setModalActive] = useState(false);
 
+  // States para edição das tasks
+  const [taskTitle, setTaskTitle] = useState(task.title);
+  const [taskDescription, setTaskDescription] = useState(task.description);
+
+  // Dispatch para completar task.
   const handleCompleteTask = () => {
     dispatch(completeTask(task));
   };
 
+  // // Dispatch para desfazer task.
+  const handleUncompleteTask = () => {
+    dispatch(uncompleteTask(task));
+  };
+
+  // Dispatch para deletar task.
   const handleDeleteTask = () => {
     dispatch(deleteTask(task));
   };
 
-  const handleUncompleteTask = () => {
-    dispatch(uncompleteTask(task));
+  // // Dispatch para editar task.
+  const handleEditTask = () => {
+    if (taskTitle) {
+      const editedTask = {
+        id: task.id,
+        title: taskTitle,
+        description: taskDescription,
+        completed: task.completed
+      };
+
+      dispatch(editTask(editedTask));
+
+      // Fechar modal.
+      setModalActive(false);
+    } else {
+      alert("Insira pelo menos o título da tarefa!");
+    }
   };
 
   return (
@@ -80,7 +115,12 @@ const TaskCard: React.FC<IProps> = ({ task }) => {
             </button>
           )}
 
-          <button className="task-card__task__actions--add">
+          <button
+            className="task-card__task__actions--add"
+            onClick={() => {
+              setModalActive(true);
+            }}
+          >
             <FaPen />
           </button>
 
@@ -94,6 +134,38 @@ const TaskCard: React.FC<IProps> = ({ task }) => {
           </button>
         </div>
       </div>
+
+      <Modal
+        title="Editar tarefa"
+        modalActive={modalActive}
+        setModalActive={setModalActive}
+      >
+        <input
+          type="text"
+          placeholder="Insira o título da sua tarefa!"
+          value={taskTitle}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setTaskTitle(e.target.value);
+          }}
+        />
+
+        <input
+          type="text"
+          placeholder="Insira a descrição da sua tarefa!"
+          value={taskDescription}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setTaskDescription(e.target.value);
+          }}
+        />
+
+        <button
+          onClick={() => {
+            handleEditTask();
+          }}
+        >
+          Editar
+        </button>
+      </Modal>
     </TaskCardStyle>
   );
 };

@@ -36,16 +36,30 @@ const task = createSlice({
       );
 
       uncompleteTask.completed = false;
-      return state;
     },
 
     // Deletar tarefa.
     deleteTask: (state: any, action: PayloadAction<Task>) => {
       return state.filter((task: Task) => task.id !== action.payload.id);
+    },
+
+    // Editar tarefa.
+    editTask: (state: any, action: PayloadAction<Task>) => {
+      const editedTask = state.find(
+        (task: Task) => task.id === action.payload.id
+      );
+
+      editedTask.title = action.payload.title;
+      editedTask.description = action.payload.description;
     }
   }
 });
 
-export const { addNewTask, completeTask, uncompleteTask, deleteTask } =
-  task.actions;
+export const {
+  addNewTask,
+  completeTask,
+  uncompleteTask,
+  deleteTask,
+  editTask
+} = task.actions;
 export default task.reducer;
