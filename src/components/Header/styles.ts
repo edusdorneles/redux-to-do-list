@@ -19,7 +19,7 @@ export const HeaderStyle = styled.div`
 
     .header__container__switch {
       position: absolute;
-      top: 25px;
+      top: 30px;
       right: 10px;
 
       .header__container__switch--icon {

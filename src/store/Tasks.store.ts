@@ -6,17 +6,21 @@ import { v4 as uuidv4 } from "uuid";
 const task = createSlice({
   name: "task",
 
-  initialState: [] as Task[],
+  initialState: localStorage.getItem("redux-tasks")
+    ? JSON.parse(localStorage.getItem("redux-tasks") || "{}")
+    : ([] as Task[]),
 
   reducers: {
     // Adcionar tarefa
-    addNewTask: (state, action: PayloadAction<Task>) => {
+    addNewTask: (state: any, action: PayloadAction<Task>) => {
       state.push({
         id: uuidv4(),
         title: action.payload.title,
         description: action.payload.description,
         completed: false
       });
+
+      localStorage.setItem("redux-tasks", JSON.stringify(state));
     },
 
     // Completar tarefa
@@ -26,7 +30,8 @@ const task = createSlice({
       );
 
       completeTask.completed = true;
-      return state;
+
+      localStorage.setItem("redux-tasks", JSON.stringify(state));
     },
 
     // Desfazer tarefa.
@@ -36,11 +41,19 @@ const task = createSlice({
       );
 
       uncompleteTask.completed = false;
+
+      localStorage.setItem("redux-tasks", JSON.stringify(state));
     },
 
     // Deletar tarefa.
     deleteTask: (state: any, action: PayloadAction<Task>) => {
-      return state.filter((task: Task) => task.id !== action.payload.id);
+      const deletedTask = state.findIndex(
+        (task: Task) => task.id === action.payload.id
+      );
+
+      state.splice(deletedTask, 1);
+
+      localStorage.setItem("redux-tasks", JSON.stringify(state));
     },
 
     // Editar tarefa.
@@ -51,6 +64,8 @@ const task = createSlice({
 
       editedTask.title = action.payload.title;
       editedTask.description = action.payload.description;
+
+      localStorage.setItem("redux-tasks", JSON.stringify(state));
     }
   }
 });
