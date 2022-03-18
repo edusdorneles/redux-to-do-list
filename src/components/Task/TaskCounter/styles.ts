@@ -33,4 +33,9 @@ export const TaskCounterStyle = styled.div`
       }
     }
   }
+
+  /* Mobile */
+  ${(props) => props.theme.media.mobile} {
+    grid-template-columns: 1fr;
+  }
 `;
