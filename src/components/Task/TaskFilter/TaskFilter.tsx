@@ -8,17 +8,20 @@ import { useDispatch } from "react-redux";
 import { TaskFilterStyle } from "./styles";
 
 const TaskFilter: React.FC = () => {
-  const dispatch = useDispatch();
   const [activeFilter, setActiveFilter] = useState("all");
+  const dispatch = useDispatch();
 
+  // Alterar filtro para "Mostrar tudo".
   const handleFilterAll = () => {
     dispatch(filterTasks(null));
   };
 
+  // Alterar filtro para "Mostrar concluídas".
   const handleFilterCompleted = () => {
     dispatch(filterTasks(true));
   };
 
+  // Alterar filtro para "Mostrar não concluídas".
   const handleFilterNotCompleted = () => {
     dispatch(filterTasks(false));
   };

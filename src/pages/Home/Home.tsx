@@ -26,6 +26,8 @@ const Home: React.FC = () => {
           <p>Tarefas:</p>
         </div>
 
+        {/* 1. Verifica se existe tarefas, caso contrário, exibe um texto para feedback. */}
+        {/* 2. Faço um filtro antes de mapear as tasks, dependendo do filtro que o usuário escolheu. */}
         {tasks.length ? (
           tasks
             .filter((task: any) => {

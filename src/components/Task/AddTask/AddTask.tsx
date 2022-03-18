@@ -10,7 +10,6 @@ import { AddTaskStyle } from "./styles";
 const AddTask: React.FC = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
-
   const dispatch = useDispatch();
 
   // Função para checar se o usuário inseriu pele menos o título da tarefa.

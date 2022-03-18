@@ -8,6 +8,7 @@ const theme = createSlice({
   },
 
   reducers: {
+    // Alterar tema.
     switchTheme: (state) => {
       state.theme = !state.theme;
     }

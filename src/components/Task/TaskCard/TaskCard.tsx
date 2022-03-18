@@ -22,8 +22,8 @@ interface IProps {
 }
 
 const TaskCard: React.FC<IProps> = ({ task }) => {
-  const dispatch = useDispatch();
   const [modalActive, setModalActive] = useState(false);
+  const dispatch = useDispatch();
 
   // States para edição das tasks
   const [taskTitle, setTaskTitle] = useState(task.title);

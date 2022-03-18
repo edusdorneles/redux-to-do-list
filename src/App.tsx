@@ -19,10 +19,4 @@ const App: React.FC = () => {
   );
 };
 
-const mapStateToProps = (state: ITheme) => {
-  return {
-    theme: state.theme
-  };
-};
-
 export default App;
