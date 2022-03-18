@@ -27,11 +27,21 @@ const task = createSlice({
       return state;
     },
 
-    deleteTask: (state, action: PayloadAction<string>) => {
-      return state.filter((task: Task) => task.id !== action.payload);
+    uncompleteTask: (state: any, action: PayloadAction<Task>) => {
+      const uncompleteTask = state.find(
+        (task: Task) => task.id === action.payload.id
+      );
+
+      uncompleteTask.completed = false;
+      return state;
+    },
+
+    deleteTask: (state: any, action: PayloadAction<Task>) => {
+      return state.filter((task: Task) => task.id !== action.payload.id);
     }
   }
 });
 
-export const { addNewTask, deleteTask, completeTask } = task.actions;
+export const { addNewTask, completeTask, uncompleteTask, deleteTask } =
+  task.actions;
 export default task.reducer;

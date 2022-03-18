@@ -26,7 +26,7 @@ const Home: React.FC = () => {
         </div>
 
         {tasks.map((task: Task) => (
-          <TaskCard task={task} />
+          <TaskCard key={task.id} task={task} />
         ))}
       </Container>
     </HomeStyle>

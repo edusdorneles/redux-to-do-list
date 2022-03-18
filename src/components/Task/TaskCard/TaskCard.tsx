@@ -1,6 +1,6 @@
 // Redux
 import { useDispatch } from "react-redux";
-import { completeTask } from "store/Tasks.store";
+import { completeTask, deleteTask, uncompleteTask } from "store/Tasks.store";
 
 // Styles
 import { TaskCardStyle } from "./styles";
@@ -18,6 +18,14 @@ const TaskCard: React.FC<IProps> = ({ task }) => {
 
   const handleCompleteTask = () => {
     dispatch(completeTask(task));
+  };
+
+  const handleDeleteTask = () => {
+    dispatch(deleteTask(task));
+  };
+
+  const handleUncompleteTask = () => {
+    dispatch(uncompleteTask(task));
   };
 
   return (
@@ -53,7 +61,12 @@ const TaskCard: React.FC<IProps> = ({ task }) => {
 
         <div className="task-card__task__actions">
           {task.completed ? (
-            <button className="task-card__task__actions--remove">
+            <button
+              className="task-card__task__actions--remove"
+              onClick={() => {
+                handleUncompleteTask();
+              }}
+            >
               <FaMinus />
             </button>
           ) : (
@@ -71,7 +84,12 @@ const TaskCard: React.FC<IProps> = ({ task }) => {
             <FaPen />
           </button>
 
-          <button className="task-card__task__actions--remove">
+          <button
+            className="task-card__task__actions--remove"
+            onClick={() => {
+              handleDeleteTask();
+            }}
+          >
             <FaTimes />
           </button>
         </div>
