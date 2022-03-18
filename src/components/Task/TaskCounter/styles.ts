@@ -9,6 +9,9 @@ export const TaskCounterStyle = styled.div`
     background-color: ${(props) => props.theme.colors.primary};
     border-radius: ${(props) => props.theme.borderRadius};
     box-shadow: ${(props) => props.theme.boxShadow};
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #606060;
     width: 100%;
     padding: 10px;
@@ -29,5 +32,10 @@ export const TaskCounterStyle = styled.div`
         color: #eb4b2f;
       }
     }
+  }
+
+  /* Mobile */
+  ${(props) => props.theme.media.mobile} {
+    grid-template-columns: 1fr;
   }
 `;
