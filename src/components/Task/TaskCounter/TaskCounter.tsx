@@ -22,6 +22,12 @@ const TaskCounter: React.FC = () => {
       </div>
 
       <div className="task-counter">
+        <p className="task-counter--total">
+          Total: <span>{tasks.length}</span>
+        </p>
+      </div>
+
+      <div className="task-counter">
         <p className="task-counter--not-completed">
           Não concluídas: <span>{notCompletedTasks.length}</span>
         </p>

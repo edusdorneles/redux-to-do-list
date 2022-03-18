@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TaskCounterStyle = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
 
   .task-counter {
@@ -16,6 +16,10 @@ export const TaskCounterStyle = styled.div`
 
     p {
       font-size: ${(props) => props.theme.fontSize.medium};
+
+      &.task-counter--total span {
+        color: ${(props) => props.theme.colors.third};
+      }
 
       &.task-counter--completed span {
         color: #21bb4e;
