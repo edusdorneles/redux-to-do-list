@@ -4,25 +4,26 @@ import { TaskCardStyle } from "./styles";
 // Icons
 import { FaCheck, FaMinus, FaTimes } from "react-icons/fa";
 
-const TaskCard: React.FC = () => {
+// Interfaces
+interface IProps {
+  task: Task;
+}
+
+const TaskCard: React.FC<IProps> = ({ task }) => {
   return (
     <TaskCardStyle>
-      <div className="task-card__title">
-        <p>Tarefas:</p>
-      </div>
-
       <div className="task-card__task">
         <div className="task-card__task__text">
-          <p className="task-card__task__text__title">Primeira tarefa!</p>
+          <p className="task-card__task__text__title">{task.title}</p>
 
           <p className="task-card__task__text__description">
-            Descrição da primeira tarefa!
+            {task.description}
           </p>
         </div>
 
         <div className="task-card__task__actions">
           <div className="task-card__task__actions--add">
-            <FaCheck />
+            {task.completed ? <FaMinus /> : <FaCheck />}
           </div>
 
           <div className="task-card__task__actions--remove">

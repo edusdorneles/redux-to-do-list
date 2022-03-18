@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const TaskCardStyle = styled.div`
-  .task-card__title {
-    padding: 20px 0px 5px 0px;
-
-    p {
-      text-align: center;
-    }
-  }
-
   .task-card__task {
     background-color: ${(props) => props.theme.colors.secondary};
     border-radius: ${(props) => props.theme.borderRadius};
@@ -19,6 +11,7 @@ export const TaskCardStyle = styled.div`
     border: 1px solid #606060;
     width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
 
     .task-card__task__text {
       .task-card__task__text__title {
