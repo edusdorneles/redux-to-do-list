@@ -1,8 +1,12 @@
+// Redux
+import { useDispatch } from "react-redux";
+import { completeTask } from "store/Tasks.store";
+
 // Styles
 import { TaskCardStyle } from "./styles";
 
 // Icons
-import { FaCheck, FaMinus, FaTimes } from "react-icons/fa";
+import { FaCheck, FaMinus, FaTimes, FaPen } from "react-icons/fa";
 
 // Interfaces
 interface IProps {
@@ -10,25 +14,66 @@ interface IProps {
 }
 
 const TaskCard: React.FC<IProps> = ({ task }) => {
+  const dispatch = useDispatch();
+
+  const handleCompleteTask = () => {
+    dispatch(completeTask(task));
+  };
+
   return (
     <TaskCardStyle>
-      <div className="task-card__task">
+      <div
+        className={
+          task.completed
+            ? "task-card__task task-card__task--completed"
+            : "task-card__task"
+        }
+      >
         <div className="task-card__task__text">
-          <p className="task-card__task__text__title">{task.title}</p>
+          <p
+            className={
+              task.completed
+                ? "task-card__task__text__title task-card__task__text__title--completed"
+                : "task-card__task__text__title"
+            }
+          >
+            {task.title}
+          </p>
 
-          <p className="task-card__task__text__description">
+          <p
+            className={
+              task.completed
+                ? "task-card__task__text__description task-card__task__text__description--completed"
+                : "task-card__task__text__description"
+            }
+          >
             {task.description}
           </p>
         </div>
 
         <div className="task-card__task__actions">
-          <div className="task-card__task__actions--add">
-            {task.completed ? <FaMinus /> : <FaCheck />}
-          </div>
+          {task.completed ? (
+            <button className="task-card__task__actions--remove">
+              <FaMinus />
+            </button>
+          ) : (
+            <button
+              className="task-card__task__actions--add"
+              onClick={() => {
+                handleCompleteTask();
+              }}
+            >
+              <FaCheck />
+            </button>
+          )}
 
-          <div className="task-card__task__actions--remove">
+          <button className="task-card__task__actions--add">
+            <FaPen />
+          </button>
+
+          <button className="task-card__task__actions--remove">
             <FaTimes />
-          </div>
+          </button>
         </div>
       </div>
     </TaskCardStyle>
